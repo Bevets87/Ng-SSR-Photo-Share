@@ -6,9 +6,7 @@ module.exports = {
   resolve: { extensions: ['.js', '.ts'] },
   target: 'node',
   mode: 'production',
-  externals: [webpackNodeExternals({
-    whitelist: ['tslib']
-  })],
+  externals: [webpackNodeExternals()],
   output: {
     path: path.join(process.cwd(), 'dist'),
     filename: 'seed-database.js',

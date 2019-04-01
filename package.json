@@ -24,7 +24,7 @@
     "prod": "npm run ssr:build:prod && npm run start",
     "dev": "npm run ssr:dev",
     "api": "cross-env NODE_ENV=development ts-node ./scripts/start-api-server.ts",
-    "heroku-prebuild": "node ./dist/seed-database.js",
+    "heroku-postbuild": "node ./dist/seed-database.js",
     "start": "node ./dist/server.js",
     "test:server:controllers": "cross-env NODE_ENV=testing jest ./server/controllers --config=./server/jest.config.json --watch --runInBand",
     "test:server:db": "cross-env NODE_ENV=testing jest ./server/db --config=./server/jest.config.json --watch --runInBand",
