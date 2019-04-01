@@ -61,6 +61,7 @@
     "helmet": "^3.15.0",
     "my-sql": "^1.2.15",
     "no-favicon": "0.0.1",
+    "reflect-metadata": "^0.1.13",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "webpack-cli": "^3.2.3",
