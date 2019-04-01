@@ -10,14 +10,20 @@ import { config } from '../../config';
 
 const MySqlStore = require('express-mysql-session')(session);
 
-const sessionStore = new MySqlStore({
-  host: config.db_host,
-  port: config.db_port,
-  password: config.db_password,
-  user: config.db_user,
-  database: config.db_database,
-});
+let sessionStore;
 
+if (process.env.NODE_ENV === 'production') {
+  sessionStore = new MySqlStore(config.db_url);
+
+} else {
+  sessionStore = new MySqlStore({
+    host: config.db_host,
+    port: config.db_port,
+    password: config.db_password,
+    user: config.db_user,
+    database: config.db_database,
+  });
+}
 
 export const middleware = (app: Application) => {
   app.use(noFavicon());
