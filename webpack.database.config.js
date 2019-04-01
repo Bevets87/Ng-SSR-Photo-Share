@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const webpackNodeExternals = require('webpack-node-externals');
 
 module.exports = {
@@ -17,5 +18,8 @@ module.exports = {
       { test: /\.ts$/, loader: 'ts-loader' }
     ]
   },
+  plugins: [
+    new webpack.EnvironmentPlugin(['NODE_ENV'])
+  ]
 
 }

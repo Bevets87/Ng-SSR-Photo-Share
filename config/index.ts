@@ -1,18 +1,16 @@
-import { prodConfig } from './config.production';
-import { devConfig } from './config.development';
-import { testConfig } from './config.testing';
-
-const env = process.env.NODE_ENV;
-
 let envConfig;
 
-if (env === 'development') {
+if (process.env.NODE_ENV === 'development') {
+  const { devConfig } = require('./config.development');
   envConfig = devConfig;
-} else if (env === 'production') {
+} else if (process.env.NODE_ENV === 'production') {
+  const { prodConfig } = require('./config.production');
   envConfig = prodConfig;
-} else if (env === 'testing') {
+} else if (process.env.NODE_ENV === 'testing') {
+  const { testConfig } = require('./config.testing');
   envConfig = testConfig;
 } else {
+  const { devConfig } = require('./config.development');
   envConfig = devConfig;
 }
 
