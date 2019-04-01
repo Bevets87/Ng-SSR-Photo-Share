@@ -5434,10 +5434,12 @@ var TagComponent = /** @class */ (function () {
         this.photosLoading = true;
         this.photosSubscription = this.postService.getPostsByTagId(this.tag.id, this.photosPagination)
             .subscribe(function (response) {
-            _this.photosLoading = false;
-            _this.photos = response.posts.data;
-            _this.photosPagination.count = response.posts.count;
             _this.tag = response.tag;
+            _this.photosLoading = false;
+            _this.photosPagination.count = response.posts.count;
+            response.posts.data.forEach(function (photo) {
+                _this.photos.push(photo);
+            });
         });
     };
     TagComponent.prototype.hasNext = function (pagination) {

@@ -31,6 +31,7 @@ export class ExploreDataResolver implements Resolve<ApiResponse> {
         }),
         catchError(error => {
           console.error(error);
+
           return of(error);
         })
       );

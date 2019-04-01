@@ -55,10 +55,13 @@ export class TagComponent implements OnInit, OnDestroy {
     this.photosSubscription = this.postService.getPostsByTagId(this.tag.id, this.photosPagination)
     .subscribe(
       (response) => {
-        this.photosLoading = false;
-        this.photos = response.posts.data;
-        this.photosPagination.count = response.posts.count;
         this.tag = response.tag;
+        this.photosLoading = false;
+        this.photosPagination.count = response.posts.count;
+        response.posts.data.forEach(photo => {
+          this.photos.push(photo);
+        });
+
       }
     );
   }
