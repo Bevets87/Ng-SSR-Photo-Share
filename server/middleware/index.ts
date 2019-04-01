@@ -10,10 +10,7 @@ const { config } = require('../../config');
 const { connection } = require('../db');
 const session = require('express-session');
 const MySqlStore = require('express-mysql-session')(session);
-const sessionStore = new MySqlStore({
-  expiration: config.session_expiration,
-  clearExpired: true
-}, connection);
+const sessionStore = new MySqlStore({}, connection);
 
 
 export const middleware = (app: Application) => {
