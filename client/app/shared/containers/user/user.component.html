@@ -1,0 +1,7 @@
+<div class="user">
+  <app-avatar [src]="user.avatar" [name]="user.username" (click)="onProfile()"></app-avatar>
+  <ng-container *ngIf="!user.is_me">
+    <button class="btn btn-primary" *ngIf="!user.is_followee" (click)="onFollow()">Follow</button>
+    <button class="btn btn-primary" *ngIf="user.is_followee" (click)="onUnfollow()">Following</button>
+  </ng-container>
+</div>

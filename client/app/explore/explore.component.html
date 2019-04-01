@@ -1,0 +1,14 @@
+<div class="explore-page">
+  <div class="clr-row">
+    <div class="clr-col-xs-12 clr-col-sm-10 clr-offset-sm-1">
+      <app-photo-gallery
+        [deletable]="false"
+        title="Explore"
+        [loading]="photosLoading"
+        [photos]="photos"
+        (load)="onLoadPhotos()"
+       >
+      </app-photo-gallery>
+    </div>
+  </div>
+</div>

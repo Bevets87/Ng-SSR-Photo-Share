@@ -1,0 +1,14 @@
+<div class="card">
+  <div class="card-header">
+    <app-avatar [src]="photo.avatar" [name]="photo.username" (click)="onNavigateToProfile()"></app-avatar>
+    <clr-icon shape="times" size="50" *ngIf="deletable" (click)="onDelete()" [ngStyle]="{cursor: 'pointer'}"></clr-icon>
+  </div>
+  <div class="card-img" (click)="onNavigateToPost()">
+    <img [src]="photo.image_url" (error)="onError($event)"/>
+
+    <div class="card-img-overlay">
+      <span><clr-icon shape="talk-bubbles" size="50"></clr-icon> {{photo.comments}}</span>
+      <span><clr-icon shape="heart" size="50"></clr-icon> {{photo.likes}}</span>
+    </div>
+  </div>
+</div>

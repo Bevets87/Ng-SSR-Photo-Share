@@ -1,0 +1,53 @@
+@import '../styles/base';
+@import '../styles/colors';
+@import '../styles/mixins';
+.tag-page {
+  width: 100%;
+  min-height: 100vh;
+  background: $off-white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  &-header {
+    margin-top: 1rem;
+    width: 65%;
+    background: $off-white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    @include respond(desktop) {
+      width: 75%;
+    }
+    @include respond(tablet) {
+      width: 85%;
+    }
+    @include respond(phone) {
+      width: 95%;
+    }
+    &-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      h1,
+      h5 {
+        padding: 0;
+        margin: 0;
+      }
+    }
+  }
+  &-posts {
+    width: 65%;
+    @include respond(desktop) {
+      width: 75%;
+    }
+    @include respond(tablet) {
+      width: 85%;
+    }
+    @include respond(phone) {
+      width: 95%;
+    }
+  }
+}

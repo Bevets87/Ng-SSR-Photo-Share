@@ -1,0 +1,23 @@
+<header class="header-6">
+    <div class="branding">
+      <a class="nav-link" routerLink="/">
+        <clr-icon shape="image-gallery"></clr-icon>
+        <span class="title">Photoshare</span>
+      </a>
+    </div>
+    <app-search-input></app-search-input>
+    <div class="header-actions">
+        <clr-dropdown>
+            <button class="nav-icon" clrDropdownTrigger>
+                <clr-icon shape="cog"></clr-icon>
+                <clr-icon shape="caret down"></clr-icon>
+            </button>
+            <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+                <a clrDropdownItem routerLink="/">Home</a>
+                <a clrDropdownItem routerLink="/explore">Explore</a>
+                <a clrDropdownItem (click)="onProfile()">Profile</a>
+                <a clrDropdownItem (click)="onLogout()">Logout</a>
+            </clr-dropdown-menu>
+        </clr-dropdown>
+    </div>
+</header>

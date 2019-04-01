@@ -1,0 +1,12 @@
+<div class="card-header">
+  <div>
+  <clr-icon shape="heart" size="50" (click)="onToggleLike()" [ngStyle]="{cursor: 'pointer'}" [ngClass]="post.me_likes ? 'is-solid': ''"></clr-icon>
+  <clr-signpost *ngIf="hasTags()">
+  <clr-icon shape="tags" size="50" clrSignpostTrigger></clr-icon>
+    <clr-signpost-content [clrPosition]="'bottom-right'" *clrIfOpen>
+      <li class="list-group-item" *ngFor="let tag of getTagNames()" (click)="onClickTag(tag)"><a>#{{tag.tag_name}}</a></li>
+    </clr-signpost-content>
+  </clr-signpost>
+  </div>
+  <span class="bold">{{post.likes}} likes</span>
+</div>

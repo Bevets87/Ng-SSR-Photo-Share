@@ -1,0 +1,21 @@
+<form [formGroup]="searchForm" class="search">
+  <label for="search_input">
+    <input formControlName="search" type="text" placeholder="Search">
+  </label>
+  <div class="search-dropdown" *ngIf="hasInput()">
+    <div class="header" *ngFor="let item of searchData" (click)="onNavigate(item)">
+      <div class="branding">
+        <img [src]="item.icon" *ngIf="item.icon; else defaultIcon"/>
+        <ng-template #defaultIcon>
+          <clr-icon shape="tag" size="40"></clr-icon>
+        </ng-template>
+        <ul class="nav-list list-unstyled">
+          <li>{{item.title}}</li>
+          <li>{{item.info}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</form>
+
+

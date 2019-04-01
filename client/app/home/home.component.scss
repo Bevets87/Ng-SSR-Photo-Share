@@ -1,0 +1,37 @@
+@import '../styles/colors';
+@import '../styles/mixins';
+.home-page {
+  width: 100%;
+  min-height: 100vh;
+  background: $off-white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  &-profile {
+    width: 100%;
+    height: 3rem;
+    background: $white;
+  }
+  .clr-row {
+    width: 60%;
+    @include respond(tv) {
+      width: 70%;
+    }
+    @include respond(desktop) {
+      width: 80%;
+    }
+    @include respond(tablet) {
+      width: 95%;
+    }
+    @include respond(phone) {
+      width: 100%;
+    }
+  }
+  .card {
+    background: none;
+    &-block {
+      background: $white;
+    }
+  }
+}

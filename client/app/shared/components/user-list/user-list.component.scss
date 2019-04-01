@@ -1,0 +1,13 @@
+@import '../../../styles/base';
+@import '../../../styles/colors';
+
+.card {
+  @extend %overflow-scroll;
+  max-height: 100vh;
+  background: none;
+
+  &-block {
+    background: $white;
+
+  }
+}

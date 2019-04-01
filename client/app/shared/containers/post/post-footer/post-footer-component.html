@@ -1,0 +1,8 @@
+<div>
+  <div class="card-footer">
+    <input type="text" placeholder="Add a comment..." class="clr-input" [(ngModel)]="comment" (keyup.enter)="onEnterComment()">
+  </div>
+  <div class="card-footer">
+    <app-pagination [pagination]="pagination" (pageChange)="onPageChange($event)"></app-pagination>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="avatar">
+  <img *ngIf="src; else defaultAvatar" class="avatar-img" [src]="src">
+  <ng-template #defaultAvatar>
+    <clr-icon size="60" shape="user" class="is-solid"></clr-icon>
+  </ng-template>
+  <span>{{name}}</span>
+</div>

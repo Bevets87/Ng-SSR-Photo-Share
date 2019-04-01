@@ -1,0 +1,30 @@
+<div class="login-wrapper">
+    <form class="login" (ngSubmit)="onSubmit()">
+        <section class="title">
+          <h3 class="welcome">Welcome to</h3>
+            <span><clr-icon size="40" shape="image-gallery" class="is-solid"></clr-icon>
+            Photoshare</span>
+          <h5 class="hint">{{ loginMode ? 'Sign in to your account' : 'Create your account now' }}</h5>
+
+        </section>
+        <div class="login-group" [formGroup]="form">
+            <clr-input-container>
+                <input type="text" name="username" clrInput placeholder="Username" formControlName="username"/>
+            </clr-input-container>
+            <clr-password-container>
+                <input type="password" name="password" clrPassword placeholder="Password" formControlName="password"/>
+            </clr-password-container>
+            <clr-password-container *ngIf="!loginMode">
+                <input type="password" name="password_confirmation" clrPassword placeholder="Password Confirmation" formControlName="password_confirmation"/>
+            </clr-password-container>
+            <div *ngIf="form.invalid" class="error active">
+              <span *ngIf="errorMessage; else defaultErrorMessage">{{errorMessage}}</span>
+              <ng-template #defaultErrorMessage>username is required</ng-template>
+            </div>
+            <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Submit</button>
+            <a *ngIf="loginMode" routerLink="/register" class="signup">Don't have an account? Sign up</a>
+            <span *ngIf="!loginMode" class="signup">By signing up, you agree to our Terms, Data Policy and Cookies Policy.</span>
+            <button *ngIf="!loginMode" type="button" class="btn" routerLink="/login" >Log In</button>
+        </div>
+    </form>
+</div>

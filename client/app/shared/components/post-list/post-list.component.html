@@ -1,0 +1,13 @@
+<div class="post-list" [appScroll]="95" (scrollBottom)="onScrollBottom()">
+  <ng-container *ngFor="let post of posts">
+    <app-post [post]="post" [followable]="false"></app-post>
+  </ng-container>
+  <app-spinner *ngIf="loading"></app-spinner>
+</div>
+
+
+
+
+
+
+

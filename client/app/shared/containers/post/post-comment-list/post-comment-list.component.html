@@ -1,0 +1,8 @@
+<ul class="list-group list-group-flush">
+  <ng-container *ngIf="!loading; else loadingSpinner">
+    <li class="list-group-item" *ngFor="let comment of post.comments.data"><span class="bold">{{comment.username}}</span> {{comment.comment_text}}</li>
+  </ng-container>
+  <ng-template #loadingSpinner>
+    <app-spinner></app-spinner>
+  </ng-template>
+</ul>

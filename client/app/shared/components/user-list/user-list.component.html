@@ -1,0 +1,11 @@
+<div class="card" [appScroll]="90" (scrollBottom)="onScrollBottom()">
+  <div class="card-header" *ngIf="title">
+    {{title}}
+  </div>
+  <div class="card-block">
+    <app-user *ngFor="let user of users" [navigateable]="navigateable" [user]="user"></app-user>
+  </div>
+
+</div>
+
+

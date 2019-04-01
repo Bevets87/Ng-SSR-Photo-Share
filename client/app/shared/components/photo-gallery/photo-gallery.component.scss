@@ -1,0 +1,19 @@
+@import '../../../styles/base';
+
+.card {
+  @extend %overflow-scroll;
+  max-height: 100vh;
+  background: none;
+  border: none;
+
+  &-header {
+    padding: 0;
+    margin: 0;
+  }
+
+  &-block {
+    padding: 0;
+    margin: 0;
+  }
+
+}

@@ -1,0 +1,23 @@
+<div class="pagination">
+  <div class="pagination-info">
+    <span *ngIf="hasCount()">{{getOffsetStart()}} - {{getOffsetEnd()}} of </span>
+    <span>{{pagination.count}} {{pagination.table}}</span>
+
+  </div>
+  <div class="btn-group">
+    <button class="btn btn-icon" [disabled]="!hasFirstPage()" (click)="onFirst()">
+      <clr-icon shape="step-forward-2 down"></clr-icon>
+    </button>
+    <button class="btn btn-icon" [disabled]="!hasFirstPage()" (click)="onPrevious()">
+      <clr-icon shape="angle left"></clr-icon>
+    </button>
+    <button class="btn btn-icon"[disabled]="true">{{getCurrentPage()}}</button>
+
+    <button class="btn btn-icon" [disabled]="!hasLastPage()" (click)="onNext()">
+      <clr-icon shape="angle right"></clr-icon>
+    </button>
+    <button class="btn btn-icon" [disabled]="!hasLastPage()" (click)="onLast()">
+      <clr-icon shape="step-forward-2 up"></clr-icon>
+    </button>
+  </div>
+</div>

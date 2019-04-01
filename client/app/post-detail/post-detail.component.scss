@@ -1,0 +1,24 @@
+@import '../styles/colors';
+@import '../styles/base';
+@import '../styles/mixins';
+.post-detail {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: $off-white;
+  &-block {
+    @extend %overflow-scroll;
+    margin-top: 1rem;
+    width: 30rem;
+    height: 80vh;
+    @include respond(tablet) {
+      width: 80%;
+    }
+    @include respond(phone) {
+      width: 95%;
+    }
+  }
+}

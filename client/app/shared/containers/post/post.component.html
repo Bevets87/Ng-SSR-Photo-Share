@@ -1,0 +1,17 @@
+<div class="card">
+  <app-post-header [followable]="followable" [post]="post" (follow)="onFollow($event)"></app-post-header>
+  <app-post-photo [post]="post"></app-post-photo>
+  <app-post-icon-menu [post]="post" (like)="onLike($event)" ></app-post-icon-menu>
+  <app-post-comment-list [post]="post" [loading]="commentsLoading"></app-post-comment-list>
+  <app-post-footer
+    [post]="post"
+    [pagination]="commentsPagination"
+    [username]="me.username"
+    (enterComment)="onEnterComment($event)"
+    (pageChange)="onPageChange($event)"
+  >
+  </app-post-footer>
+</div>
+
+
+

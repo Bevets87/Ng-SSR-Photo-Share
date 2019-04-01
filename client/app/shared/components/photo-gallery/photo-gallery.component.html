@@ -1,0 +1,16 @@
+<div class="card" appScroll="90" (scrollBottom)="onScrollBottom()">
+  <div class="card-header">
+    {{title}}
+  </div>
+  <div class="card-block">
+    <div class="clr-row">
+      <div class="clr-col-sm-12 clr-col-md-6 clr-col-lg-4" *ngFor="let photo of photos">
+        <app-photo [photo]="photo" [deletable]="deletable" (delete)="onDelete($event)"></app-photo>
+      </div>
+    </div>
+  </div>
+  <app-spinner *ngIf="loading"></app-spinner>
+</div>
+
+
+

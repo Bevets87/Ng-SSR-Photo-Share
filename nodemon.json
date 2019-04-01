@@ -1,0 +1,5 @@
+{
+  "watch": "./dist/server",
+  "ext": "ts, js",
+  "exec": "ts-node ./server.ts"
+}

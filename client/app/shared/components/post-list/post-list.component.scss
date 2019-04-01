@@ -1,0 +1,5 @@
+@import '../../../styles/base';
+.post-list {
+  @extend %overflow-scroll;
+  max-height: 100vh;
+}

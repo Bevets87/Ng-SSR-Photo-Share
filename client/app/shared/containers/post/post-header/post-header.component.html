@@ -1,0 +1,8 @@
+<div class="card-header">
+  <app-avatar [src]="post.avatar" [name]="post.username" (click)="onClick()"></app-avatar>
+  <ng-container *ngIf="!post.is_me && followable">
+    <button class="btn btn-primary" *ngIf="!post.is_followee" (click)="onFollow()">Follow</button>
+    <button class="btn btn-primary" *ngIf="post.is_followee" (click)="onUnfollow()">Following</button>
+  </ng-container>
+</div>
+

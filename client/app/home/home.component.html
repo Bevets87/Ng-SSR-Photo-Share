@@ -1,0 +1,28 @@
+<div class="home-page">
+  <div class="clr-row">
+    <div class="clr-col-xs-12 clr-col-sm-10 clr-offset-sm-1 clr-col-md-6 clr-offset-md-0 clr-col-lg-7" *ngIf="postsPagination.count">
+      <app-post-list [loading]="postsLoading" [posts]="posts" (load)="onLoadPosts()"></app-post-list>
+
+    </div>
+    <div [class]="getSideSectionClass()">
+      <div class="card">
+        <div class="card-header">
+          Profile
+        </div>
+        <div class="card-block" (click)="onProfile()">
+          <app-avatar [src]="me.avatar" [name]="me.username"></app-avatar>
+        </div>
+      </div>
+      <app-user-list
+        *ngIf="hasUsers()"
+        [users]="users"
+        (load)="onLoadUsers()"
+        title="Suggested"
+        [navigateable]="true"
+      >
+      </app-user-list>
+    </div>
+  </div>
+
+</div>
+

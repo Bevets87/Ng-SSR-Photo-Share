@@ -1,0 +1,9 @@
+  @import '../../../../styles/base';
+  .bold {
+    font-weight: bold;
+  }
+
+  .list-group {
+    @extend %overflow-scroll;
+    max-height: 10rem;
+  }
