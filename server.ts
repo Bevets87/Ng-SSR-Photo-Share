@@ -21,8 +21,6 @@ const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./dist/server/mai
 
 const connectDatabase = async (server) => {
   await database.connect();
-  await database.setup();
-  await database.seed({ users: 50, tags: 50 });
   server.listen(config.port, () => {
     const message = `server listening on ${config.base_url}`;
     console.log(message);
