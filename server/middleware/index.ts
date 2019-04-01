@@ -6,16 +6,19 @@ import * as cors from 'cors';
 import * as noFavicon from 'no-favicon';
 import * as session from 'express-session';
 import { queryParser } from './query-parser';
-import { config } from '../../config';
 
+
+const { config } = require('../../config');
 const MySqlStore = require('express-mysql-session')(session);
 
 let sessionStore;
 
 if (process.env.NODE_ENV === 'production') {
+
   sessionStore = new MySqlStore(config.db_url);
 
 } else {
+
   sessionStore = new MySqlStore({
     host: config.db_host,
     port: config.db_port,
