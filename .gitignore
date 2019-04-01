@@ -38,6 +38,7 @@ testem.log
 /typings
 /config/config.development.ts
 /config/config.testing.ts
+package-lock.json
 
 # System Files
 .DS_Store
