@@ -6,22 +6,23 @@ import { catchError, tap } from 'rxjs/operators';
 import { PostService } from '../core/services/post.service';
 import { TransferState, makeStateKey } from '@angular/platform-browser';
 import { isPlatformServer } from '@angular/common';
+import { Tag } from '../core/models/tag.model';
+
 
 @Injectable()
-export class TagDataResolver implements Resolve<ApiResponse> {
+export class TagDataResolver implements Resolve<{tag: Tag, posts: ApiResponse}> {
   constructor(
     private router: Router,
     private postService: PostService,
     private transferState: TransferState,
     @Inject(PLATFORM_ID) private platformId: string
   ) {}
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ApiResponse> {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<{tag: Tag, posts: ApiResponse}> {
     const id = route.params['id'];
     const TAGGED_POSTS = makeStateKey<ApiResponse>(`tagged_posts-${id}`);
     if (this.transferState.hasKey(TAGGED_POSTS)) {
-      const posts = this.transferState.get(TAGGED_POSTS, { tag: null, data: [], count: 0 });
+      const posts = this.transferState.get(TAGGED_POSTS, { tag: null, posts: { data: [], count: 0 } });
       this.transferState.remove(TAGGED_POSTS);
-
       return of(posts);
     } else {
       return this.postService.getPostsByTagId(id, { limit: 9, offset: 0 })

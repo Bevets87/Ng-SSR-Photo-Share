@@ -35,9 +35,7 @@ export class ExploreComponent implements OnInit, OnDestroy  {
     this.route.data.subscribe(
       (response: { data: ApiResponse }) => {
 
-        if (!response.data.count) {
-          this.router.navigateByUrl('/');
-        }
+        this.photosPagination.offset = 0;
         this.photosPagination.count = response.data.count;
         this.photos = response.data.data;
       }
@@ -68,6 +66,7 @@ export class ExploreComponent implements OnInit, OnDestroy  {
     )
     .subscribe((photos: ApiResponse) => {
       this.photosLoading = false;
+      this.photosPagination.count = photos.count;
       photos.data.forEach((photo: Photo) => {
         this.photos.push(photo);
       });

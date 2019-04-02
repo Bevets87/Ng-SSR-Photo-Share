@@ -41,6 +41,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.route.data.subscribe(
       (response: { data: Profile }) => {
         this.profile = response.data;
+        this.photosPagination.offset = 0;
         this.photosPagination.count = response.data.photos.count;
         this.photos = response.data.photos.data;
       }

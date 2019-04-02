@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.route.data
     .pipe(
       concatMap((response: { data: ApiResponse }) => {
-
+        this.postsPagination.offset = 0;
         this.postsPagination.count = response.data.count;
         this.posts = response.data.data;
         this.usersPagination.limit = response.data.count ? 5 : 15;
@@ -55,6 +55,7 @@ export class HomeComponent implements OnInit, OnDestroy {
           tap((users: ApiResponse) => {
 
             this.users = users.data;
+            this.usersPagination.offset = 0;
             this.usersPagination.count = users.count;
 
           })
@@ -93,6 +94,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     )
     .subscribe((posts: ApiResponse) => {
       this.postsLoading = false;
+      this.postsPagination.count = posts.count;
       posts.data.forEach((post: Post) => {
         this.posts.push(post);
       });
@@ -107,6 +109,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       )
       .subscribe((users: ApiResponse) => {
         this.usersLoading = false;
+        this.usersPagination.count = users.count;
         users.data.forEach((user: Post) => {
           this.users.push(user);
         });

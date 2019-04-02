@@ -1,18 +1,13 @@
 <div class="profile-page">
   <div class="header-block">
-    <ng-container *ngIf="profile.avatar; else defaultAvatar">
-      <img [src]="profile.avatar" />
-    </ng-container>
-    <ng-template #defaultAvatar>
-      <clr-icon size="60" shape="user" class="is-solid"></clr-icon>
-    </ng-template>
+    <img [src]="profile.avatar" />
     <div class="header-block-actions">
       <div class="btn-group btn-primary top">
-        <button class="btn btn-link">{{profile.username}}</button>
+
         <clr-dropdown *ngIf="profile.is_me; else defaultButton">
           <button class="btn btn-icon" clrDropdownTrigger>
             <clr-icon shape="user"></clr-icon>
-            Profile
+            {{profile.username}}
           </button>
           <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
                 <a clrDropdownItem (click)="onShowEditProfileModal()">Edit Profile</a>
@@ -22,8 +17,8 @@
           </clr-dropdown-menu>
         </clr-dropdown>
         <ng-template #defaultButton>
-          <button class="btn btn-primary" *ngIf="profile.is_followee" (click)="onUnfollow()">Following</button>
-          <button class="btn btn-primary" *ngIf="!profile.is_followee" (click)="onFollow()">Follow</button>
+          <button class="btn btn-primary" *ngIf="profile.is_followee" (click)="onUnfollow()">Following {{profile.username}}</button>
+          <button class="btn btn-primary" *ngIf="!profile.is_followee" (click)="onFollow()">Follow {{profile.username}}</button>
         </ng-template>
       </div>
 

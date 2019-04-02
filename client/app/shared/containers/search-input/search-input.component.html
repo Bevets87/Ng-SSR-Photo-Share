@@ -7,7 +7,7 @@
       <div class="branding">
         <img [src]="item.icon" *ngIf="item.icon; else defaultIcon"/>
         <ng-template #defaultIcon>
-          <clr-icon shape="tag" size="40"></clr-icon>
+          <clr-icon shape="tag" size="40" *ngIf="isTag(item)"></clr-icon>
         </ng-template>
         <ul class="nav-list list-unstyled">
           <li>{{item.title}}</li>

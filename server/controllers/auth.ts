@@ -55,7 +55,11 @@ export const isCorrectPassword = async (req: Request, res: Response, next: NextF
 
 export const createNewUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const user = await createUser({ username: req.body.username, password: req.body.password });
+    const user = await createUser({
+      username: req.body.username,
+      password: req.body.password,
+      avatar: `https://ui-avatars.com/api/?name=${req.body.username}&size=128`
+    });
     req['user'] = user;
     next();
   } catch (error) {

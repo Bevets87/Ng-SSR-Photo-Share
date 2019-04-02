@@ -48,6 +48,12 @@ export class SearchInputComponent implements OnInit {
     return this.searchField.value;
   }
 
+  isTag(item): boolean {
+    return item.type === 'tag';
+  }
+
+
+
 
   onNavigate(item) {
     if (item.type === 'tag') {

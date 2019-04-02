@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Photo } from '../core/models/photo.model';
 import { Pagination } from '../core/models/pagination.model';
 import { Subscription } from 'rxjs';
 import { Tag } from '../core/models/tag.model';
 import { PostService } from '../core/services/post.service';
+import { ApiResponse } from '../core/models/api-response.model';
 
 
 @Component({
@@ -15,30 +16,34 @@ import { PostService } from '../core/services/post.service';
 export class TagComponent implements OnInit, OnDestroy {
   tag: Tag;
 
-  photos: Photo[];
+  photos: Photo[] = [];
   photosPagination: Pagination = { limit: 9, offset: 0, count: 0, table: 'Photos' };
-  photosLoading: boolean;
+  photosLoading = true;
   photosSubscription: Subscription;
 
 
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private postService: PostService
   ) { }
 
   ngOnInit() {
+
     this.route.data.subscribe(
-      (response: { data: any }) => {
+      (response: { data: { tag: Tag, posts: ApiResponse } }) => {
+
         this.tag = response.data.tag;
-        this.photos = response.data.posts.data;
+        this.photosLoading = false;
+        this.photosPagination.offset = 0;
         this.photosPagination.count = response.data.posts.count;
+        this.photos = response.data.posts.data;
 
       }
     );
 
   }
+
 
   ngOnDestroy() {
     this.unsubscribePhotos();
@@ -66,20 +71,22 @@ export class TagComponent implements OnInit, OnDestroy {
     );
   }
 
-  private hasNext(pagination: Pagination): boolean {
-    const next = pagination.limit + pagination.offset;
-    return next < pagination.count;
+  private hasNext(): boolean {
+    const next = this.photosPagination.limit + this.photosPagination.offset;
+    return next < this.photosPagination.count;
   }
-  private setNext(pagination: Pagination) {
-    const next = pagination.limit + pagination.offset;
-    pagination.offset = next;
+  private setNext() {
+    const next = this.photosPagination.limit + this.photosPagination.offset;
+    this.photosPagination.offset = next;
   }
   onLoadPhotos() {
+
     if (this.photosLoading) {
       return;
     }
-    if (this.hasNext(this.photosPagination)) {
-      this.setNext(this.photosPagination);
+
+    if (this.hasNext()) {
+      this.setNext();
       this.loadPhotos();
     }
   }
