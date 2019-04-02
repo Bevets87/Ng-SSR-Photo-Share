@@ -9,7 +9,7 @@
         <ng-template #defaultIcon>
           <clr-icon shape="tag" size="40" *ngIf="isTag(item)"></clr-icon>
         </ng-template>
-        <ul class="nav-list list-unstyled">
+        <ul class="list-unstyled" [ngClass]="isTag(item) ? 'tag-info' : 'user-info'">
           <li>{{item.title}}</li>
           <li>{{item.info}}</li>
         </ul>
