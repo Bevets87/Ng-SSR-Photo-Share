@@ -1,5 +1,5 @@
 # Ng-SSR-Photo-Share
-[https://ng-ssr-photo-share.herokuapp.com/](https://ng-ssr-photo-share.herokuapp.com/)
+[https://ng-ssr-photo-share.herokuapp.com/](https://ng-ssr-photo-share.herokuapp.com/login)
 
 ### User Stories:
 
